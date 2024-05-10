@@ -1,0 +1,48 @@
+EXP05-----------------------------------------
+PART1--------------------LEDBinary
+#include<reg51.h>
+#define LED P2
+void main(void)
+	{
+		P1=00;
+		LED=0;
+		for(;;)
+		{
+			P1++;
+			LED++;
+		}
+	}
+PART2-------------------------------1/2 seconds wait
+#include<reg51.h>
+void MSDelay(unsigned int);
+void main(void)
+	{
+		unsigned char mybyte;
+		P1=0xFF;
+		while(1)
+		{
+			mybyte=P1;
+			MSDelay(500);
+			P2=mybyte;
+		}
+	}
+	void MSDelay(unsigned int time)
+		{
+			unsigned int i, j;
+			for(i=0;i<time;i++)
+			for(j=0;j<1275;j++);
+		}
+PART3------------------------------if it is high send 55H
+#include <reg51.h>
+sbit mybit = P1^5;
+void main(void)
+	{
+		mybit=1;
+		while(1)
+			{
+				if(mybit==1)
+					P0=0x55;
+				else
+			   		P2=0xAA;
+			}
+	}
