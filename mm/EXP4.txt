@@ -13,6 +13,7 @@ void main(void)
 
 
 //2nd
+//send values to port 1
 #include<reg51.h>
 void main(void)
 { 
